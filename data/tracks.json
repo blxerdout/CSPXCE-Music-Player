@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "title": "Track Title",
+    "artist": "Your Name",
+    "album": "Album Name",
+    "duration": "0:00",
+    "src": "assets/audio/track-01.mp3",
+    "cover": "assets/images/cover-01.jpg"
+  }
+]

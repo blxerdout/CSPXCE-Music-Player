@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>// Creative Spxce Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Ambient background layers -->
+  <div id="bg-grid"></div>
+  <div id="scanlines"></div>
+
+  <!-- Page wrapper -->
+  <div id="app">
+
+    <!-- Site header -->
+    <header id="site-header">
+      <span class="header-bracket">[</span>
+      <span class="header-title">CREATIVE SPXCE<span class="accent"> MUSIC</span></span>
+      <span class="header-bracket">]</span>
+      <span class="header-status">● ONLINE</span>
+    </header>
+
+    <!-- Waveform Visualizer -->
+    <div id="visualizer-wrap">
+      <canvas id="visualizer"></canvas>
+      <div class="vis-label">// WAVEFORM</div>
+    </div>
+
+    <!-- Player Card -->
+    <div id="player">
+
+      <!-- Corner decorations -->
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+
+      <!-- Album Art -->
+      <div id="album-art">
+        <div id="album-art-inner">
+          <img id="cover" src="" alt="Album Art" />
+          <div id="album-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Track Info -->
+      <div id="track-info">
+        <span id="track-title">NO SIGNAL</span>
+        <span id="track-artist">--- ---</span>
+      </div>
+
+      <!-- Progress -->
+      <div id="progress-container">
+        <span id="current-time">0:00</span>
+        <div class="range-wrap">
+          <input type="range" id="progress-bar" min="0" value="0" step="0.1" />
+          <div id="progress-fill"></div>
+        </div>
+        <span id="duration">0:00</span>
+      </div>
+
+      <!-- Controls -->
+      <div id="controls">
+        <button id="btn-shuffle" aria-label="Shuffle" title="Shuffle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 3 21 3 21 8"/><polyline points="16 21 21 21 21 16"/>
+            <line x1="4" y1="20" x2="21" y2="3"/><line x1="15" y1="15" x2="21" y2="21"/>
+            <line x1="4" y1="4" x2="9" y2="9"/>
+          </svg>
+        </button>
+        <button id="btn-prev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="19,20 9,12 19,4"/><rect x="5" y="4" width="2" height="16"/>
+          </svg>
+        </button>
+        <button id="btn-play" aria-label="Play">
+          <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+          <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+            <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+          </svg>
+        </button>
+        <button id="btn-next" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5,4 15,12 5,20"/><rect x="17" y="4" width="2" height="16"/>
+          </svg>
+        </button>
+        <button id="btn-repeat" aria-label="Repeat" title="Repeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+            <polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Volume -->
+      <div id="volume-container">
+        <svg id="volume-icon" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+        <div class="range-wrap">
+          <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.8" />
+        </div>
+      </div>
+
+    </div>
+    <!-- /player -->
+
+    <!-- Playlist -->
+    <div id="playlist">
+      <div id="playlist-header">
+        <span class="playlist-label">// QUEUE</span>
+        <span class="playlist-count" id="playlist-count">0 TRACKS</span>
+      </div>
+      <ul id="playlist-items"></ul>
+    </div>
+
+    <!-- Footer -->
+    <footer id="site-footer">
+      <span>SYS_VER 1.0.0</span>
+      <span class="accent">■ ■ ■</span>
+      <span>WEB_AUDIO_API</span>
+    </footer>
+
+  </div>
+  <!-- /app -->
+
+  <!-- Hidden native audio element -->
+  <audio id="audio-engine" crossorigin="anonymous"></audio>
+
+  <script src="js/playlist.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/player.js"></script>
+</body>
+</html>
