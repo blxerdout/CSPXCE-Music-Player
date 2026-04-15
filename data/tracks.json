@@ -1,11 +1,65 @@
 [
   {
     "id": 1,
-    "title": "Track Title",
-    "artist": "Your Name",
-    "album": "Album Name",
-    "duration": "0:00",
-    "src": "assets/audio/track-01.mp3",
-    "cover": "assets/images/cover-01.jpg"
+    "title": "Atlanti$",
+    "artist": "Creative Spxce",
+    "album": "",
+    "duration": "",
+    "src": "assets/audio/Atlanti$.mp3",
+    "cover": ""
+  },
+  {
+    "id": 2,
+    "title": "2 Week Notice",
+    "artist": "Creative Spxce",
+    "album": "",
+    "duration": "",
+    "src": "assets/audio/2WEEKXNOTICE.wav",
+    "cover": ""
+  },
+  {
+    "id": 3,
+    "title": "I Like This",
+    "artist": "Creative Spxce",
+    "album": "",
+    "duration": "",
+    "src": "assets/audio/IXLIKEXTHIS.wav",
+    "cover": ""
+  },
+  {
+    "id": 4,
+    "title": "Mind Power",
+    "artist": "Creative Spxce",
+    "album": "",
+    "duration": "",
+    "src": "assets/audio/MINDXPOWER.wav",
+    "cover": ""
+  },
+  {
+    "id": 5,
+    "title": "Moon Rocks",
+    "artist": "Creative Spxce",
+    "album": "",
+    "duration": "",
+    "src": "assets/audio/MOONXROCKS.wav",
+    "cover": ""
+  },
+  {
+    "id": 6,
+    "title": "Ripples",
+    "artist": "Creative Spxce",
+    "album": "",
+    "duration": "",
+    "src": "assets/audio/RIPPLES.wav",
+    "cover": ""
+  },
+  {
+    "id": 7,
+    "title": "Spxce",
+    "artist": "Creative Spxce",
+    "album": "",
+    "duration": "",
+    "src": "assets/audio/SPXCE.wav",
+    "cover": ""
   }
 ]

@@ -11,6 +11,9 @@
 </head>
 <body>
 
+  <!-- Galaxy background canvas -->
+  <canvas id="galaxy-bg"></canvas>
+
   <!-- Ambient background layers -->
   <div id="bg-grid"></div>
   <div id="scanlines"></div>
@@ -29,7 +32,7 @@
     <!-- Waveform Visualizer -->
     <div id="visualizer-wrap">
       <canvas id="visualizer"></canvas>
-      <div class="vis-label">// WAVEFORM</div>
+      <div class="vis-label">// FREQUENCY</div>
     </div>
 
     <!-- Player Card -->
@@ -123,12 +126,6 @@
       <ul id="playlist-items"></ul>
     </div>
 
-    <!-- Footer -->
-    <footer id="site-footer">
-      <span>SYS_VER 1.0.0</span>
-      <span class="accent">■ ■ ■</span>
-      <span>WEB_AUDIO_API</span>
-    </footer>
 
   </div>
   <!-- /app -->
@@ -136,6 +133,7 @@
   <!-- Hidden native audio element -->
   <audio id="audio-engine" crossorigin="anonymous"></audio>
 
+  <script src="js/galaxy.js"></script>
   <script src="js/playlist.js"></script>
   <script src="js/visualizer.js"></script>
   <script src="js/player.js"></script>

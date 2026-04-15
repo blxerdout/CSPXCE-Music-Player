@@ -59,6 +59,17 @@ body {
   position: relative;
 }
 
+/* ── Galaxy Background Canvas ───────────────────────────────── */
+#galaxy-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.72;
+}
+
 /* ── Background Grid ────────────────────────────────────────── */
 #bg-grid {
   position: fixed;
@@ -236,6 +247,11 @@ body {
   /* Placeholder when no cover loaded */
   background-image:
     linear-gradient(135deg, var(--purple-dark) 0%, var(--blue-dark) 100%);
+}
+
+/* Empty cover placeholder */
+#cover[src=""] {
+  background: linear-gradient(135deg, var(--purple-dark) 0%, var(--blue-dark) 100%);
 }
 
 /* Holographic shimmer overlay on album art */
@@ -613,6 +629,10 @@ li.active .pl-index {
   flex-shrink: 0;
 }
 
+.pl-thumb-empty {
+  background: linear-gradient(135deg, var(--purple-dark) 0%, var(--blue-dark) 100%);
+}
+
 li.active .pl-thumb {
   border-color: var(--blue-bright);
   box-shadow: 0 0 6px var(--blue-mid);
@@ -695,15 +715,6 @@ li.active .pl-index {
   to   { transform: scaleY(1.0); }
 }
 
-/* ── Footer ─────────────────────────────────────────────────── */
-#site-footer {
-  display: flex;
-  gap: 20px;
-  font-size: 0.58rem;
-  color: var(--text-dim);
-  letter-spacing: 0.12em;
-  user-select: none;
-}
 
 /* ── Accent utility ──────────────────────────────────────────── */
 .accent {
