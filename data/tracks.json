@@ -3,61 +3,169 @@
     "id": 1,
     "title": "Atlanti$",
     "artist": "Creative Spxce",
-    "album": "",
+    "album": "Less is More",
     "duration": "",
     "src": "assets/audio/Atlanti$.mp3",
     "cover": ""
   },
   {
     "id": 2,
+    "title": "Hidden Leaf V",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/HiddenXLeafV.wav",
+    "cover": ""
+  },
+  {
+    "id": 3,
+    "title": "King of the Plaza",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/KingofThePlaza.wav",
+    "cover": ""
+  },
+  {
+    "id": 4,
+    "title": "Memories 110595",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/Memories110595.wav",
+    "cover": ""
+  },
+  {
+    "id": 5,
+    "title": "Midgar Nights",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/MidgarNights.wav",
+    "cover": ""
+  },
+  {
+    "id": 6,
+    "title": "More Less",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/MoreXLess.wav",
+    "cover": ""
+  },
+  {
+    "id": 7,
+    "title": "Peppermints",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/Peppermints.wav",
+    "cover": ""
+  },
+  {
+    "id": 8,
+    "title": "Perfect Feeling",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/PerfectXFeeling.wav",
+    "cover": ""
+  },
+  {
+    "id": 9,
+    "title": "Press Start",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/PressStart.wav",
+    "cover": ""
+  },
+  {
+    "id": 10,
+    "title": "Sleep Talk Zzz",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/SleepTalkZzz.wav",
+    "cover": ""
+  },
+  {
+    "id": 11,
+    "title": "Tokyo Noodles Yum",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/TokyoNoodlesYum.wav",
+    "cover": ""
+  },
+  {
+    "id": 12,
+    "title": "Xtra Cheez",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/XtraCheez.wav",
+    "cover": ""
+  },
+  {
+    "id": 13,
+    "title": "Yo Luv",
+    "artist": "Creative Spxce",
+    "album": "Less is More",
+    "duration": "",
+    "src": "assets/audio/yoLuv.wav",
+    "cover": ""
+  },
+  {
+    "id": 14,
     "title": "2 Week Notice",
     "artist": "Creative Spxce",
-    "album": "",
+    "album": "CreativeSpxce",
     "duration": "",
     "src": "assets/audio/2WEEKXNOTICE.wav",
     "cover": ""
   },
   {
-    "id": 3,
+    "id": 15,
     "title": "I Like This",
     "artist": "Creative Spxce",
-    "album": "",
+    "album": "CreativeSpxce",
     "duration": "",
     "src": "assets/audio/IXLIKEXTHIS.wav",
     "cover": ""
   },
   {
-    "id": 4,
+    "id": 16,
     "title": "Mind Power",
     "artist": "Creative Spxce",
-    "album": "",
+    "album": "CreativeSpxce",
     "duration": "",
     "src": "assets/audio/MINDXPOWER.wav",
     "cover": ""
   },
   {
-    "id": 5,
+    "id": 17,
     "title": "Moon Rocks",
     "artist": "Creative Spxce",
-    "album": "",
+    "album": "CreativeSpxce",
     "duration": "",
     "src": "assets/audio/MOONXROCKS.wav",
     "cover": ""
   },
   {
-    "id": 6,
+    "id": 18,
     "title": "Ripples",
     "artist": "Creative Spxce",
-    "album": "",
+    "album": "CreativeSpxce",
     "duration": "",
     "src": "assets/audio/RIPPLES.wav",
     "cover": ""
   },
   {
-    "id": 7,
+    "id": 19,
     "title": "Spxce",
     "artist": "Creative Spxce",
-    "album": "",
+    "album": "CreativeSpxce",
     "duration": "",
     "src": "assets/audio/SPXCE.wav",
     "cover": ""

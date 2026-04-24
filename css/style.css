@@ -564,140 +564,196 @@ input[type="range"]::-moz-range-progress {
   box-shadow: var(--glow-purple);
 }
 
-/* Playlist items — populated by JS */
-#playlist-items li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 16px;
-  border-bottom: 1px solid rgba(59, 15, 110, 0.4);
-  cursor: pointer;
-  transition: background var(--transition), padding-left var(--transition);
-  position: relative;
-  overflow: hidden;
+/* ── Album Group ─────────────────────────────────────────────── */
+.album-group {
+  list-style: none;
+  border-bottom: 1px solid rgba(59, 15, 110, 0.5);
 }
 
-#playlist-items li::before {
+.album-group:last-child { border-bottom: none; }
+
+/* ── Album Row (clickable header) ────────────────────────────── */
+.album-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 16px;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition);
+  user-select: none;
+}
+
+.album-row::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  left: 0; top: 0; bottom: 0;
   width: 2px;
   background: transparent;
   transition: background var(--transition), box-shadow var(--transition);
 }
 
-#playlist-items li:hover {
-  background: rgba(138, 43, 226, 0.12);
-  padding-left: 20px;
+.album-row:hover {
+  background: rgba(138, 43, 226, 0.1);
 }
 
-#playlist-items li:hover::before {
+.album-row:hover::before {
   background: var(--purple-bright);
   box-shadow: var(--glow-purple);
 }
 
-#playlist-items li.active {
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.1) 0%, rgba(138, 43, 226, 0.06) 100%);
+.album-group.open .album-row {
+  background: linear-gradient(90deg, rgba(191, 95, 255, 0.08) 0%, transparent 100%);
 }
 
-#playlist-items li.active::before {
-  background: var(--blue-bright);
-  box-shadow: var(--glow-blue);
+.album-group.open .album-row::before {
+  background: var(--purple-bright);
+  box-shadow: var(--glow-purple);
 }
 
-.pl-index {
-  font-size: 0.62rem;
-  color: var(--text-dim);
-  min-width: 18px;
-  text-align: center;
-}
-
-li.active .pl-index {
-  color: var(--blue-bright);
-  text-shadow: var(--glow-text-b);
-}
-
-.pl-thumb {
-  width: 36px;
-  height: 36px;
-  border-radius: 2px;
+/* ── Album Cover ─────────────────────────────────────────────── */
+.album-cover {
+  width: 46px;
+  height: 46px;
+  border-radius: 3px;
   object-fit: cover;
+  flex-shrink: 0;
   border: 1px solid var(--purple-dark);
   background-color: var(--bg-deep);
-  flex-shrink: 0;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.pl-thumb-empty {
+.album-cover-empty {
   background: linear-gradient(135deg, var(--purple-dark) 0%, var(--blue-dark) 100%);
 }
 
-li.active .pl-thumb {
-  border-color: var(--blue-bright);
-  box-shadow: 0 0 6px var(--blue-mid);
+.album-group.open .album-cover {
+  border-color: var(--purple-bright);
+  box-shadow: var(--glow-purple);
 }
 
-.pl-meta {
+/* ── Album Info ──────────────────────────────────────────────── */
+.album-info {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
-.pl-title {
+.album-name {
+  font-family: var(--font-display);
   font-size: 0.72rem;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  letter-spacing: 0.07em;
   color: var(--text-primary);
+  text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color var(--transition), text-shadow var(--transition);
 }
 
-li.active .pl-title {
-  color: var(--blue-bright);
-  text-shadow: var(--glow-text-b);
+.album-group.open .album-name {
+  color: var(--purple-bright);
+  text-shadow: var(--glow-text-p);
 }
 
-.pl-artist {
-  font-size: 0.62rem;
+.album-track-count {
+  font-size: 0.58rem;
   color: var(--text-secondary);
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: 0.1em;
 }
 
-.pl-duration {
-  font-size: 0.62rem;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
+/* ── Expand Arrow ────────────────────────────────────────────── */
+.album-arrow {
   flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--text-dim);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color var(--transition);
 }
 
-li.active .pl-duration {
+.album-arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.album-group.open .album-arrow {
+  transform: rotate(90deg);
   color: var(--purple-bright);
 }
 
-/* Playing animation bars for active track */
-.pl-eq {
+/* ── Collapsible Track List ──────────────────────────────────── */
+.album-tracks {
+  list-style: none;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ── Individual Track Item ───────────────────────────────────── */
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 16px 10px 24px;
+  border-bottom: 1px solid rgba(59, 15, 110, 0.3);
+  cursor: pointer;
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    background var(--transition),
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+.track-item:last-child { border-bottom: none; }
+
+.track-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.track-item:hover {
+  background: rgba(0, 212, 255, 0.06);
+}
+
+.track-item:hover::before {
+  background: var(--blue-bright);
+  box-shadow: var(--glow-blue);
+}
+
+.track-item.active {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.1) 0%, rgba(138, 43, 226, 0.05) 100%);
+}
+
+.track-item.active::before {
+  background: var(--blue-bright);
+  box-shadow: var(--glow-blue);
+}
+
+/* ── EQ Bars (active track indicator) ───────────────────────── */
+.track-eq {
   display: none;
   align-items: flex-end;
   gap: 2px;
   height: 14px;
   min-width: 14px;
+  flex-shrink: 0;
 }
 
-li.active .pl-eq {
-  display: flex;
-}
+.track-item.active .track-eq { display: flex; }
+.track-item.active .track-num { display: none; }
 
-li.active .pl-index {
-  display: none;
-}
-
-.pl-eq span {
+.track-eq span {
   display: block;
   width: 2px;
   background: var(--blue-bright);
@@ -706,13 +762,68 @@ li.active .pl-index {
   animation: eq-bar 0.8s ease-in-out infinite alternate;
 }
 
-.pl-eq span:nth-child(1) { height: 6px;  animation-delay: 0.0s; }
-.pl-eq span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
-.pl-eq span:nth-child(3) { height: 8px;  animation-delay: 0.05s; }
+.track-eq span:nth-child(1) { height: 6px;  animation-delay: 0.00s; }
+.track-eq span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+.track-eq span:nth-child(3) { height: 8px;  animation-delay: 0.05s; }
 
 @keyframes eq-bar {
   from { transform: scaleY(0.3); }
   to   { transform: scaleY(1.0); }
+}
+
+/* ── Track Number ────────────────────────────────────────────── */
+.track-num {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  min-width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+/* ── Track Meta ──────────────────────────────────────────────── */
+.track-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.track-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition), text-shadow var(--transition);
+}
+
+.track-item.active .track-title {
+  color: var(--blue-bright);
+  text-shadow: var(--glow-text-b);
+}
+
+.track-artist {
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Track Duration ──────────────────────────────────────────── */
+.track-dur {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.track-item.active .track-dur {
+  color: var(--purple-bright);
 }
 
 
