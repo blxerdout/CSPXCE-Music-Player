@@ -19,6 +19,9 @@ const Player = (() => {
   const iconPlay     = document.getElementById('icon-play');
   const iconPause    = document.getElementById('icon-pause');
 
+  // ── Constants ──────────────────────────────────────────────
+  const PREVIEW_LIMIT = 60; // seconds
+
   // ── State ──────────────────────────────────────────────────
   let audioCtx      = null;
   let sourceNode    = null;
@@ -31,6 +34,23 @@ const Player = (() => {
   let tracks        = [];
   let dragging      = false;
   let shuffleQueue  = [];
+  let previewEnded  = false;
+
+  // ── Preview notice refs ────────────────────────────────────
+  const previewNotice  = document.getElementById('preview-notice');
+  const previewBuyLink = document.getElementById('preview-buy-link');
+
+  function showPreviewNotice() {
+    previewEnded = true;
+    const url = tracks[currentIndex]?.bandcampUrl || '';
+    if (previewBuyLink) previewBuyLink.href = url;
+    if (previewNotice) previewNotice.classList.remove('hidden');
+  }
+
+  function hidePreviewNotice() {
+    previewEnded = false;
+    if (previewNotice) previewNotice.classList.add('hidden');
+  }
 
   // ── Web Audio API setup (lazy — requires user gesture) ────
   function initAudioContext() {
@@ -86,7 +106,8 @@ const Player = (() => {
       coverImg.style.display = 'none';
     }
 
-    // Reset progress
+    // Reset progress and preview state
+    hidePreviewNotice();
     progressBar.value = 0;
     setFill(progressBar, 0);
     currentTime.textContent  = '0:00';
@@ -121,6 +142,12 @@ const Player = (() => {
   function togglePlay() {
     if (!audio.src || audio.src === window.location.href) {
       loadTrack(currentIndex, true);
+      return;
+    }
+    if (previewEnded) {
+      hidePreviewNotice();
+      audio.currentTime = 0;
+      play();
       return;
     }
     isPlaying ? pause() : play();
@@ -169,9 +196,15 @@ const Player = (() => {
     tracks[currentIndex].duration = dur;
   });
 
-  // Time update — progress bar + timestamps
+  // Time update — progress bar + timestamps + preview cap
   audio.addEventListener('timeupdate', () => {
     if (dragging) return;
+    if (audio.currentTime >= PREVIEW_LIMIT) {
+      pause();
+      audio.currentTime = PREVIEW_LIMIT;
+      showPreviewNotice();
+      return;
+    }
     currentTime.textContent = fmt(audio.currentTime);
     if (audio.duration) {
       progressBar.value = audio.currentTime;
@@ -207,7 +240,7 @@ const Player = (() => {
   });
 
   progressBar.addEventListener('change', () => {
-    audio.currentTime = Number(progressBar.value);
+    audio.currentTime = Math.min(Number(progressBar.value), PREVIEW_LIMIT - 0.1);
     dragging = false;
     if (isPlaying) play();
   });

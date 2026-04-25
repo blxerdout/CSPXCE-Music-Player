@@ -27,9 +27,10 @@ const Playlist = (() => {
       const key = track.album || 'Singles';
       if (!map.has(key)) {
         map.set(key, {
-          name:   key,
-          cover:  track.cover || '',
-          tracks: [],
+          name:         key,
+          cover:        track.cover || '',
+          bandcampUrl:  track.bandcampUrl || '',
+          tracks:       [],
         });
       }
       map.get(key).tracks.push({ ...track, globalIndex: i });
@@ -52,6 +53,16 @@ const Playlist = (() => {
         ? `<img class="album-cover" src="${album.cover}" alt="${album.name}" />`
         : `<div class="album-cover album-cover-empty"></div>`;
 
+      const buyBtnHTML = album.bandcampUrl
+        ? `<a class="album-buy-btn" href="${album.bandcampUrl}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${album.name} on Bandcamp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            BUY ON BANDCAMP
+           </a>`
+        : '';
+
       albumLi.innerHTML = `
         <div class="album-row" role="button" aria-expanded="false">
           ${coverHTML}
@@ -59,6 +70,7 @@ const Playlist = (() => {
             <span class="album-name">${album.name}</span>
             <span class="album-track-count">${album.tracks.length} TRACK${album.tracks.length !== 1 ? 'S' : ''}</span>
           </div>
+          ${buyBtnHTML}
           <div class="album-arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"/>
@@ -67,6 +79,10 @@ const Playlist = (() => {
         </div>
         <ul class="album-tracks" aria-hidden="true"></ul>
       `;
+
+      // Prevent buy button click from toggling the album expand/collapse
+      const buyBtn = albumLi.querySelector('.album-buy-btn');
+      if (buyBtn) buyBtn.addEventListener('click', e => e.stopPropagation());
 
       // Populate track rows inside this album
       const trackList = albumLi.querySelector('.album-tracks');
