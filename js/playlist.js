@@ -131,6 +131,7 @@ const Playlist = (() => {
   }
 
   function expandAlbum(albumLi, row, trackList) {
+    if (typeof SFX !== 'undefined') SFX.panelOpen();
     albumLi.classList.add('open');
     row.setAttribute('aria-expanded', 'true');
     trackList.setAttribute('aria-hidden', 'false');
