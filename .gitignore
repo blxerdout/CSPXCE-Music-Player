@@ -1,1 +1,6 @@
 assets/audio/
+icons/node_modules/
+icons/package.json
+icons/package-lock.json
+icons/build-icons.js
+icons/generate-icon.html

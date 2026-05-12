@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>// Creative Spxce Music</title>
+
+  <!-- PWA / Home screen icon -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="SPXCE" />
+  <meta name="theme-color" content="#04020f" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
@@ -139,10 +148,39 @@
   <!-- Hidden native audio element -->
   <audio id="audio-engine" crossorigin="anonymous"></audio>
 
+  <!-- Install / Add-to-Home-Screen banner -->
+  <div id="install-banner" class="hidden">
+    <div class="install-content">
+
+      <!-- Android: native install button -->
+      <div id="install-android" class="hidden" style="display:flex;align-items:center;gap:12px;">
+        <span class="install-label">// ADD TO HOME SCREEN</span>
+        <button id="btn-install">INSTALL APP</button>
+      </div>
+
+      <!-- iOS: manual share instructions -->
+      <div id="install-ios" class="hidden" style="display:flex;align-items:center;gap:10px;">
+        <span class="install-label">// INSTALL:</span>
+        <span class="install-ios-msg">
+          tap
+          <svg class="ios-share-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          then <strong>Add to Home Screen</strong>
+        </span>
+      </div>
+
+    </div>
+    <button id="install-dismiss" aria-label="Dismiss">✕</button>
+  </div>
+
   <script src="js/galaxy.js"></script>
   <script src="js/sfx.js"></script>
   <script src="js/playlist.js"></script>
   <script src="js/visualizer.js"></script>
   <script src="js/player.js"></script>
+  <script src="js/install.js"></script>
 </body>
 </html>
